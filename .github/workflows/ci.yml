@@ -27,36 +27,31 @@ jobs:
 
 
 
-
-
-
-
-
-    # - name: Check for .dvc directory
-    #   id: checkdvc
-    #   run: |
-    #     if [ -d .dvc ]; then
-    #       echo "::set-output name=exists::true"
-    #     else
-    #       echo "::set-output name=exists::false"
-    #     fi
-
-    # - name: Initialize DVC
-    #   if: steps.checkdvc.outputs.exists == 'false'
-    #   run: dvc init --no-scm  # we're using --no-scm because the CI environment doesn't need to interact with git for DVC
-
-
-
-
-
-
-    - name: Remove existing .dvc folder
+    - name: Check for .dvc directory
+      id: checkdvc
       run: |
-        rm -rf .dvc
+        if [ -d .dvc ]; then
+          echo "::set-output name=exists::true"
+        else
+          echo "::set-output name=exists::false"
+        fi
 
     - name: Initialize DVC
-      run: |
-        dvc init
+      if: steps.checkdvc.outputs.exists == 'false'
+      run: dvc init --no-scm  # we're using --no-scm because the CI environment doesn't need to interact with git for DVC
+
+
+
+
+
+
+    # - name: Remove existing .dvc folder
+    #   run: |
+    #     rm -rf .dvc
+
+    # - name: Initialize DVC
+    #   run: |
+    #     dvc init
 
 
 
