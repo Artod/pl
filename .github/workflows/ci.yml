@@ -52,11 +52,11 @@ jobs:
           exit 1
         fi
 
-    - name: Bypass .dvcignore
+    - name: Delete .dvcignore
       run: |
-        mv .dvcignore .dvcignore.backup
+        rm -f .dvcignore
 
     - name: Reproduce DVC pipeline
       run: |
-        dvc repro --no-strict
+        dvc repro
       
