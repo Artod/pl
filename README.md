@@ -29,7 +29,6 @@ This repository contains a simple Monte Carlo simulation to estimate the value o
 ### Installation
 
 1. Clone this repository:
-
 ```git clone https://github.com/Artod/pl.git```
 
 2. Navigate to the directory:
@@ -45,15 +44,17 @@ This repository contains a simple Monte Carlo simulation to estimate the value o
 For this demonstration using the Monte Carlo simulation:
 
 **Validation**: The CI pipeline ensures that the simulation runs correctly and produces an output.
+
 **Reproducibility**: Given the inherent randomness of Monte Carlo simulations, results will vary slightly with each run. However, with DVC, we ensure that every result, every change in the code or data can be tracked, and previous states of the project can be restored.
-##Steps:
+
+### Steps:
+
 **Set up DVC**: Initialize DVC in your local environment using dvc init.
 
 **Versioning Data & Model Outputs**: After running the simulation, the estimated value can be versioned using:
 
-```bash
-dvc add pi_estimate.txt
-```
+```dvc add pi_estimate.txt```
+
 Subsequent runs and changes can be reproduced using `dvc repro``, which re-executes the pipeline stages, ensuring consistency and reproducibility.
 
 In broader applications, DVC's integration with remote storage would allow data scientists to share datasets, intermediate data, and models, facilitating collaboration and ensuring that everyone is working from a consistent base.
