@@ -25,18 +25,44 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Check for .dvc directory
-      id: checkdvc
+
+
+
+
+
+
+
+    # - name: Check for .dvc directory
+    #   id: checkdvc
+    #   run: |
+    #     if [ -d .dvc ]; then
+    #       echo "::set-output name=exists::true"
+    #     else
+    #       echo "::set-output name=exists::false"
+    #     fi
+
+    # - name: Initialize DVC
+    #   if: steps.checkdvc.outputs.exists == 'false'
+    #   run: dvc init --no-scm  # we're using --no-scm because the CI environment doesn't need to interact with git for DVC
+
+
+
+
+
+
+    - name: Remove existing .dvc folder
       run: |
-        if [ -d .dvc ]; then
-          echo "::set-output name=exists::true"
-        else
-          echo "::set-output name=exists::false"
-        fi
+        rm -rf .dvc
 
     - name: Initialize DVC
-      if: steps.checkdvc.outputs.exists == 'false'
-      run: dvc init --no-scm  # we're using --no-scm because the CI environment doesn't need to interact with git for DVC
+      run: |
+        dvc init
+
+
+
+
+
+
 
     - name: Run Tests
       run: |
@@ -77,9 +103,9 @@ jobs:
       run: |
         dvc status
 
-    - name: List DVC-tracked files
-      run: |
-        dvc list .
+    # - name: List DVC-tracked files
+    #   run: |
+    #     dvc list .
 
     # If you feel confident about the bug being fixed or want to showcase the error:
     #- name: Reproduce DVC pipeline
