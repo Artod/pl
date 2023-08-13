@@ -27,7 +27,7 @@ jobs:
       
     - name: Setup DVC
       run: |
-        dvc init --no-scm  # we're using --no-scm because the CI environment doesn't need to interact with git for DVC
+        dvc init --no-scm -f  # we're using --no-scm because the CI environment doesn't need to interact with git for DVC
 
     - name: Run Tests
       run: |
