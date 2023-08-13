@@ -99,9 +99,9 @@ jobs:
     #   run: |
     #     dvc dag
 
-    - name: Check DVC Status
-      run: |
-        dvc status
+    # - name: Check DVC Status
+    #   run: |
+    #     dvc status
 
     # - name: List DVC-tracked files
     #   run: |
