@@ -54,5 +54,5 @@ jobs:
 
     - name: Reproduce DVC pipeline
       run: |
-        dvc repro
+        dvc repro -v
       
