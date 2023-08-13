@@ -24,10 +24,19 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-      
-    - name: Setup DVC
+
+    - name: Check for .dvc directory
+      id: checkdvc
       run: |
-        dvc init --no-scm -f  # we're using --no-scm because the CI environment doesn't need to interact with git for DVC
+        if [ -d .dvc ]; then
+          echo "::set-output name=exists::true"
+        else
+          echo "::set-output name=exists::false"
+        fi
+
+    - name: Initialize DVC
+      if: steps.checkdvc.outputs.exists == 'false'
+      run: dvc init --no-scm  # we're using --no-scm because the CI environment doesn't need to interact with git for DVC
 
     - name: Run Tests
       run: |
