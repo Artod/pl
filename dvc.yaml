@@ -1,0 +1,7 @@
+stages:
+  simulate:
+    cmd: python monte_carlo_simulation.py
+    deps:
+      - monte_carlo_simulation.py
+    outs:
+      - pi_estimate.txt

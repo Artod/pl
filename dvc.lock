@@ -1,0 +1,12 @@
+schema: '2.0'
+stages:
+  simulate:
+    cmd: python monte_carlo_simulation.py
+    deps:
+    - path: monte_carlo_simulation.py
+      md5: 4e0dcdb49bd3281e889eba8292e280b5
+      size: 871
+    outs:
+    - path: pi_estimate.txt
+      md5: 1461896438781afa9673171640029d39
+      size: 7

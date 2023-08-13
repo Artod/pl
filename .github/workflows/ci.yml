@@ -23,8 +23,27 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        # If you have additional dependencies, install them here using pip
+        pip install -r requirements.txt
+      
+    - name: Setup DVC
+      run: |
+        dvc init --no-scm  # we're using --no-scm because the CI environment doesn't need to interact with git for DVC
 
     - name: Run Tests
       run: |
         python -m unittest test_monte_carlo_simulation.py
+
+    - name: Run Simulation
+      run: python monte_carlo_simulation.py
+
+    - name: Check for pi_estimate.txt
+      run: |
+        if [[ ! -f pi_estimate.txt ]]; then
+          echo "pi_estimate.txt not found!"
+          exit 1
+        fi
+
+    - name: Reproduce DVC pipeline
+      run: |
+        dvc repro
+      
