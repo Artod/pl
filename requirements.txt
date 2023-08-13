@@ -1,3 +1,4 @@
 numpy==1.19.5
 # tensorflow==2.5.0
-dvc==2.5.4  # or the latest version at the time of your setup
+# dvc==2.5.4  # or the latest version at the time of your setup
+dvc==2.0.0  # or the latest version at the time of your setup
