@@ -26,7 +26,6 @@ jobs:
         pip install -r requirements.txt
 
 
-
     - name: Check for .dvc directory
       id: checkdvc
       run: |
@@ -41,10 +40,6 @@ jobs:
       run: dvc init --no-scm  # we're using --no-scm because the CI environment doesn't need to interact with git for DVC
 
 
-
-
-
-
     # - name: Remove existing .dvc folder
     #   run: |
     #     rm -rf .dvc
@@ -52,11 +47,6 @@ jobs:
     # - name: Initialize DVC
     #   run: |
     #     dvc init
-
-
-
-
-
 
 
     - name: Run Tests
@@ -73,6 +63,7 @@ jobs:
           exit 1
         fi
 
+
     # - name: Delete .dvcignore
     #   run: |
     #     rm -f .dvcignore
@@ -81,6 +72,7 @@ jobs:
     #   run: |
     #     dvc repro
 
+    
     - name: Show DVC Version
       run: |
         dvc --version
@@ -98,9 +90,9 @@ jobs:
     #   run: |
     #     dvc status
 
-    - name: List DVC-tracked files
-      run: |
-        dvc list .
+    # - name: List DVC-tracked files
+    #   run: |
+    #     dvc list .
 
     # If you feel confident about the bug being fixed or want to showcase the error:
     #- name: Reproduce DVC pipeline
