@@ -1,3 +1,5 @@
+*Architecture challenge is here:* https://github.com/Artod/pl_arch
+
 # Monte Carlo π Estimation CI/CD with MLOps flavour
 
 This repository demonstrates the use of Monte Carlo simulations to estimate the value of π and integrates CI (Continuous Integration) practices using GitHub Actions for automated testing. Beyond the core simulation, the project incorporates principles of MLOps, using DVC for data and model versioning.
